@@ -29,9 +29,8 @@ public:
         cout<<nodes[0]<<endl;
         for(int i =1;i<nodes.size();i++){
             minDiff = min(minDiff, nodes[i] - nodes[i-1]);
-            cout<<nodes[i]<<endl;
+            // cout<<nodes[i]<<endl;
         }
-        // minDiff = nodes[1] - nodes[0];
         return minDiff;
     }
 };
