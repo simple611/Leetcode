@@ -9,10 +9,18 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+static const bool init = []{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    return false;
+}();
+
 class Solution {
 public:
     
     // TC - O(n)   SC - O(n)
+    __attribute__((always_inline))
     int maxLevelSum(TreeNode* root) {
         int maxSum=INT_MIN;
         
