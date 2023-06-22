@@ -17,6 +17,8 @@ public:
         
 //         return free[n - 1];
         
+        
+        // TC - O(n)  SC - O(1)
         int n = prices.size();
         int free = 0, hold = -prices[0];
         
