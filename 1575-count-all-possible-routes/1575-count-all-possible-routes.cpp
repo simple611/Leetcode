@@ -21,7 +21,10 @@ public:
         return memo[curCity][remainingFuel] = ans;
     }
 
+    
+    // TC - O(n^2 * fuel)  SC- O(n*fuel)
     int countRoutes(vector<int>& locations, int start, int finish, int fuel) {
+        
         int n = locations.size();
         vector<vector<int>> memo(n, vector<int>(fuel + 1, -1));
 
