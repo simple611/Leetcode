@@ -1,4 +1,4 @@
-class Solution_queue {
+class Solution {
 public:
     double maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start, int end) {
         // Adjacency list
@@ -36,7 +36,7 @@ public:
         return dist[end];
     }
 };
-class Solution {
+class Solution_priority_queue {
 public:
     
     // TC- E(log(V))
