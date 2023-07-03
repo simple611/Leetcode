@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // Tc - O(min(m,n)⋅(m+n)) SC - O(min(m,n)) 
     bool valid(string str1, string str2, int k) {
         int len1 = str1.size(), len2 = str2.size();
         if (len1 % k > 0 || len2 % k > 0) {
