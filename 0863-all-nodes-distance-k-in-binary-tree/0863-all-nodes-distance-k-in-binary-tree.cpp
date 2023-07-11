@@ -29,6 +29,25 @@ public:
         }
     }
     
+    void dfs( TreeNode* node, int K){
+        if( visited[node])
+            return;
+        visited[node] = true;
+        if( K == 0 ){
+            result.push_back(node->val);
+            return;
+        }
+        if( node->left ){
+            dfs(node->left, K-1);
+        }
+        if( node->right){
+            dfs(node->right, K-1);
+        }
+        TreeNode* p = parent_track[node];
+        if( p )
+            dfs(p, K-1);
+    }
+    
     void bfs(TreeNode* target, int K){
         queue<TreeNode*> queue; 
         queue.push(target);
@@ -60,7 +79,8 @@ public:
     }
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         findParent(root);
-        bfs(target, k);
+        // bfs(target, k);
+        dfs(target, k);
         return result;
     }
 };
