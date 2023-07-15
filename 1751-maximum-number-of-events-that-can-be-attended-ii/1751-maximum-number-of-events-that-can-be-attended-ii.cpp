@@ -24,7 +24,8 @@ public:
     }
     
     
-    // TC - O((n*k)*n)  SC - O(n*k)
+    // TC - O((n*k)*n)  SC - O(n*k)  - Linear Search
+    // TC - O((n*k)*log n)  SC - O(n*k)  - Binary Search
     int maxValue(vector<vector<int>>& events, int k) {
         
         sort(events.begin(), events.end());
