@@ -21,8 +21,10 @@ public:
                 people.push_back(h);
             }
             req_mask = (1 << n) - 1;
-            memset(dp, -1, 1 << n + 8);
-            memset(choice, 0, 1 << n + 6);
+            // memset(dp, -1, 1 << n + 8);
+            // memset(choice, 0, 1 << n + 6);
+            memset(dp, -1, sizeof(dp));
+            memset(choice, 0, sizeof(choice));
             solve(people, 0, 0);
         
             // build the answer through the choice matrix (see the solve function first)
