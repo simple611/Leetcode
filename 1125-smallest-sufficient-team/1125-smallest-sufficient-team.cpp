@@ -4,6 +4,8 @@ class Solution {
 public:
     int req_mask, m;
     
+    
+    // TC - O( people * 2^skills)   SC - - O( people * 2^skills)
     vector<int> smallestSufficientTeam(vector<string>& req_skills, vector<vector<string>>& people_skills) {
         int n = req_skills.size();
         m = people_skills.size();
