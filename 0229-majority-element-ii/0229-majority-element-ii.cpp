@@ -19,6 +19,7 @@ public:
         return ans;
     }
     
+    //TC - O(n)  SC-O(1)
     vector<int> majorityElement(vector<int>& nums) {
         int num1 = INT_MIN, num2 = INT_MIN;
         int count1 = 0, count2 = 0;
