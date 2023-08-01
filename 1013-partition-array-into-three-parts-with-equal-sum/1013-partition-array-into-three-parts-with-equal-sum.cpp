@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // TC - O(n)  SC- O(1)
     bool canThreePartsEqualSum(vector<int>& arr) {
         int totalSum = 0;
         
