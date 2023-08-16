@@ -1,6 +1,8 @@
 class Solution {
 public:
-    vector<int> findDuplicates(vector<int>& nums) {
+    
+    // TC - O(n)  SC- O(n)
+    vector<int> findDuplicates_hashMap(vector<int>& nums) {
         map<int, int> hashMap;
         
         for(int a: nums){
@@ -17,5 +19,19 @@ public:
         }
         
         return ans;
+    }
+    
+    vector<int> findDuplicates(vector<int>& nums) {
+        
+        sort(nums.begin(), nums.end());
+        
+        vector<int> res;
+        for(int i=0;i<nums.size();i++){
+            if(i>0 && nums[i] == nums[i-1]){
+                res.push_back(nums[i]);
+            }
+        }
+        
+        return res;
     }
 };
