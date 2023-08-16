@@ -21,7 +21,8 @@ public:
         return ans;
     }
     
-    vector<int> findDuplicates(vector<int>& nums) {
+    // TC - O(nlogn) + O(n)  SC - O(1)
+    vector<int> findDuplicates_sort(vector<int>& nums) {
         
         sort(nums.begin(), nums.end());
         
@@ -29,6 +30,22 @@ public:
         for(int i=0;i<nums.size();i++){
             if(i>0 && nums[i] == nums[i-1]){
                 res.push_back(nums[i]);
+            }
+        }
+        
+        return res;
+    }
+    
+    // TC - O(n)  SC- O(1)
+    vector<int> findDuplicates(vector<int>& nums) {
+        
+        vector<int> res;
+        
+        for(int i=0;i<nums.size();i++){
+            if(nums[abs(nums[i]) - 1] < 0){
+                res.push_back(abs(nums[i]));
+            } else {
+                nums[abs(nums[i]) - 1] = -nums[abs(nums[i]) - 1];
             }
         }
         
