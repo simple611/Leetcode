@@ -17,6 +17,8 @@ public:
         return maxDiff;
     }
     
+    
+    // TC - O(n)  SC - O(n)   // BUCKET SORT
     int maximumGap(vector<int>& nums) {
         if(nums.size() < 2)
             return 0;
