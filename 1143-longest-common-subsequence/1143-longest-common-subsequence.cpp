@@ -30,6 +30,7 @@ public:
         }
     }
     
+    // TC - O(m*n)   Sc- O(m*n)
     int LCS_bottomUp(string &text1, string &text2, int m, int n){
         
         vector<vector<int>> dp(m+1, vector<int>(n+1, 0)); 
