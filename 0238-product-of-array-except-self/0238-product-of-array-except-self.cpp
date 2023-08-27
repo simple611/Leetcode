@@ -28,7 +28,8 @@ public:
         return res;
     }    
     
-    vector<int> productExceptSelf(vector<int>& nums) {
+    // TC - O(n)  SC- O(n)
+    vector<int> productExceptSelf_prefix_suffix(vector<int>& nums) {
 //         int n = nums.size();
 //         vector<int> left(n), right(n), ans(n);
         
@@ -62,5 +63,19 @@ public:
             nums[i] = lhs[i] * rhs[i];
         }
         return nums;
+    }
+    
+    // TC - O(n)  SC- O(1)
+    vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> lhs(nums.size(), 1);
+        int rhs = 1;
+        for(int i = 1; i<nums.size() ; i++){
+            lhs[i] = lhs[i-1] * nums[i-1];
+        }
+        for(int i = lhs.size()-1; i >= 1 ; i--){
+            rhs *= nums[i];
+            lhs[i-1] *= rhs;
+        }
+        return lhs;
     }
 };
