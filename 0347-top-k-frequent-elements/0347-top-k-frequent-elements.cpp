@@ -8,7 +8,9 @@ public:
     //             else return false;
     //         }
     //     };
-    vector<int> topKFrequent(vector<int>& nums, int k) {
+    
+    //TC - O(n log(n-k))  // Using hashmap approach
+    vector<int> topKFrequent_hashMap(vector<int>& nums, int k) {
         if(k==nums.size()){
             return nums;
         }
@@ -37,4 +39,28 @@ public:
         }
         return res;
     }
+    
+    vector<int> topKFrequent(vector<int>& nums, int k){
+        unordered_map<int, int> mp;
+        for(int n: nums) mp[n]++;
+        
+        vector<vector<int>> buckets(nums.size()+1);
+        for(auto item: mp){
+            buckets[item.second].push_back(item.first);
+        }
+        
+        vector<int> res;
+        for(int i=nums.size(); i>=0;i--){
+            if(res.size() == k)
+                break;
+            
+            for(auto a: buckets[i]){
+                res.push_back(a);
+            }
+        }
+        
+        return res;
+        
+    }
+    
 };
