@@ -27,6 +27,7 @@ public:
         
         for (auto word : strs) {
             tmp_sorted = countSort(word);
+            // cout<<"sorted str = "<< tmp_sorted<<endl;
             m[tmp_sorted].push_back(word);
         }
         
