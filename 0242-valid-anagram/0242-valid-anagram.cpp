@@ -8,6 +8,37 @@ static const auto io_sync_off = []()
 }();
 class Solution {
 public:
+//     bool isAnagram(string s, string t) {
+//         if(s.size() != t.size()) return false;
+        
+//         unordered_map<char,int> smap;
+//         unordered_map<char,int> tmap;
+        
+//         for(int i = 0; i < s.size(); i++){
+//             smap[s[i]]++;
+//             tmap[t[i]]++;
+//         }
+        
+//         unordered_map<char,int>:: iterator  it;
+//         cout<<"SMAP----------"<<endl;
+//         for(it = smap.begin(); it!= smap.end();++it)
+//         {
+//             cout<<it->first <<"::"<<it->second<<endl;
+//         }
+//          cout<<"TMAP----------"<<endl;
+//         for(it = tmap.begin(); it!= tmap.end();++it)
+//         {
+//             cout<<it->first <<"::"<<it->second<<endl;
+//         }
+//         cout<<"smap size = "<<smap.size()<<endl;
+//         for(int i = 0; i < smap.size(); i++){
+//             cout<<"i="<<i<<endl;
+//             cout<<smap[i]<<":"<<tmap[i]<<endl;
+//             if(smap[i] != tmap[i]) return false;
+//         }
+//         return true;
+//     }
+//     
     bool  isAnagram(string s, string t) {
 //         hashmap approach
 //         if(s.length() != t.length())
@@ -64,30 +95,31 @@ public:
         if(lenS == lenT)
         {
         
-        unordered_map<char,int> mps;
-        unordered_map<char,int> mpt;
-        
-        for( int i=0;i<lenS;++i)
-        {
-            mps[s[i]]++;
-            mpt[t[i]]++;
-        }
-        
-        unordered_map<char,int>:: iterator  it;
-        for(it = mps.begin(); it!= mps.end();++it)
-        {
-            auto itr = mpt.find(it->first);
-            if(itr == mpt.end())
-                return false;
-            else
+            unordered_map<char,int> mps;
+            unordered_map<char,int> mpt;
+
+            for( int i=0;i<lenS;++i)
             {
-                if(it->second != itr->second)
-                    return false;               
+                mps[s[i]]++;
+                mpt[t[i]]++;
             }
-        }
-        return true;
+
+            unordered_map<char,int>:: iterator  it;
+            for(it = mps.begin(); it!= mps.end();++it)
+            {
+                auto itr = mpt.find(it->first);
+                if(itr == mpt.end())
+                    return false;
+                else
+                {
+                    if(it->second != itr->second)
+                        return false;               
+                }
+            }
+            return true;
         }
         else
             return false;
     }
+    
 };
