@@ -40,6 +40,7 @@ public:
         return res;
     }
     
+    // TC - O(n)  SC- O(n)
     vector<int> topKFrequent(vector<int>& nums, int k){
         unordered_map<int, int> mp;
         for(int n: nums) mp[n]++;
