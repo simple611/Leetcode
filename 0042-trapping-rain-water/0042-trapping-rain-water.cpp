@@ -68,8 +68,11 @@ public:
         
         while(left < right){
             
-            left_max = height[left] > left_max ? height[left]: left_max;     
-            right_max = height[right] > right_max ? height[right]: right_max;
+            // left_max = height[left] > left_max ? height[left]: left_max;     
+            // right_max = height[right] > right_max ? height[right]: right_max;
+            
+            left_max = max(left_max, height[left]);
+            right_max = max(right_max, height[right]);
             
             if(left_max < right_max){
                 ans += left_max - height[left];
