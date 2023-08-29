@@ -27,12 +27,27 @@ public:
 //         }
 //         return maxP;
         
+        // int n = prices.size();
+        // int buyAtPrice = INT_MAX;
+        // int maxProfit = 0;
+        // for(int i=0; i<n; i++){
+        //     buyAtPrice = min(buyAtPrice, prices[i]);
+        //     maxProfit = max(maxProfit, prices[i] - buyAtPrice); 
+        // }
+        // return maxProfit;
+        
+        
         int n = prices.size();
         int buyAtPrice = INT_MAX;
         int maxProfit = 0;
         for(int i=0; i<n; i++){
-            buyAtPrice = min(buyAtPrice, prices[i]);
-            maxProfit = max(maxProfit, prices[i] - buyAtPrice); 
+            // buyAtPrice = min(buyAtPrice, prices[i]);
+            // maxProfit = max(maxProfit, prices[i] - buyAtPrice); 
+            
+            if(prices[i] < buyAtPrice)
+                buyAtPrice = prices[i];
+            else if(prices[i] - buyAtPrice > maxProfit)
+                maxProfit = prices[i] - buyAtPrice;
         }
         return maxProfit;
     }
