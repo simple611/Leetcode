@@ -38,16 +38,16 @@ public:
         
         
         int n = prices.size();
-        int buyAtPrice = INT_MAX;
+        int minEle = INT_MAX;
         int maxProfit = 0;
         for(int i=0; i<n; i++){
             // buyAtPrice = min(buyAtPrice, prices[i]);
             // maxProfit = max(maxProfit, prices[i] - buyAtPrice); 
             
-            if(prices[i] < buyAtPrice)
-                buyAtPrice = prices[i];
-            else if(prices[i] - buyAtPrice > maxProfit)
-                maxProfit = prices[i] - buyAtPrice;
+            if(prices[i] < minEle)
+                minEle = prices[i];
+            else if(prices[i] - minEle > maxProfit)
+                maxProfit = prices[i] - minEle;
         }
         return maxProfit;
     }
