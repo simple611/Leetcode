@@ -20,7 +20,8 @@ public:
                 //duplicate
                 // cout<<"start="<<start<<endl;
                 // cout<<"s[start]="<<s[start]<<endl;
-                ss.erase(ss.find(s[start]));
+                // ss.erase(ss.find(s[start]));
+                ss.erase(s[start]);
                 start++;
             }
             else{
