@@ -50,14 +50,16 @@ public:
     
         // Tc - O(n log k ) ,k is the size of priority queue, SC - O(k)
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-        vector<int> ans(nums.size() -k +1);
+        // vector<int> ans(nums.size() -k +1);
+        vector<int> ans;
         
         priority_queue<pair<int, int>> pq;
         
         for(int i=0;i<k;i++)
             pq.push({nums[i], i});
         
-        ans[0] = pq.top().first;
+        // ans[0] = pq.top().first;
+        ans.push_back(pq.top().first);
         
         for(int i=k;i<nums.size();i++){
             pq.push({nums[i], i});
@@ -67,7 +69,8 @@ public:
             while(!pq.empty() && pq.top().second < i-k+1)
                 pq.pop();
             
-            ans[i-k+1] = pq.top().first;
+            // ans[i-k+1] = pq.top().first;
+            ans.push_back(pq.top().first);
         }
         
         return ans;
