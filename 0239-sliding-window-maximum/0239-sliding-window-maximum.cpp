@@ -76,6 +76,7 @@ public:
         return ans;
     }
     
+    //TC: O(n) + O(n)  Sc: O(k)
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         
         vector<int> ans;
