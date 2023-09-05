@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // TC - O(log N) SC - O(1)
     int search(vector<int>& nums, int target) {
         int l =0, r = nums.size()-1;
         
