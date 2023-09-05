@@ -7,7 +7,7 @@ public:
         
         while(low<=high){
             
-            
+            // If both left and right space is sorted
             if(nums[low] < nums[high])
             {
                 ans = min(ans, nums[low]);
