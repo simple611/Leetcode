@@ -59,6 +59,9 @@ public:
  * string param_2 = obj->get(key,timestamp);
  */
 
+
+// TC - set -> O(M * L)  M, no. of set calls  
+//    - get -> O(N * L log M)  N, no. of get calls , L: avg Length of key & value string
 class TimeMap {
 public:
     
