@@ -65,7 +65,7 @@ public:
 class TimeMap {
 public:
     
-    map<string, vector<pair<int, string>>> mp;
+    unordered_map<string, vector<pair<int, string>>> mp;
     
     int getTimeStamp(int time, vector<int>& arr){
         int l = 0, r = arr.size() - 1;
