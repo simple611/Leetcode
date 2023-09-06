@@ -94,6 +94,7 @@ public:
         
     }
     
+    // TC - O(log(min(n1,n2)))  Sc- O(1)
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         int n1 = nums1.size(), n2 = nums2.size();
         
