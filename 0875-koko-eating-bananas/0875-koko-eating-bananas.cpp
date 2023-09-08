@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    // TC - O(N log)
     int minEatingSpeed(vector<int>& piles, int h) {
         
         int low=1;
@@ -9,20 +11,20 @@ public:
         for(auto x: piles)
             high = max(high, x);
         
-        while(low<high){
+        while(low<=high){
             int mid = low + (high-low)/2;
             
-            int timetaken = 0;
+            long int timetaken = 0;
             
             for(auto x: piles){
-                timetaken += ceil(1.0*x /mid);
+                timetaken += ceil((double)x /mid);
             }
             
             if(timetaken > h){
                 low = mid+1;
             } 
             else 
-                high = mid;
+                high = mid-1;
         }
         
         return low;
