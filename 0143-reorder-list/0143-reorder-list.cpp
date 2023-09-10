@@ -10,6 +10,8 @@
  */
 class Solution {
 public:
+    
+    // TC - O(N)  SC - O(N)
     void reorderList(ListNode* head) {
         
         vector<int> tmp;
@@ -24,13 +26,8 @@ public:
         int l = 0;
         int h = tmp.size()-1;
         
-        // ListNode *head = new ListNode();
         ListNode *ans = head; 
         while(l<h){
-            // ans->next = new ListNode(tmp[l++]);
-            // ans=ans->next;
-            // ans->next = new ListNode(tmp[h--]);
-            // ans = ans->next;
             ans->val = tmp[l++];
             ans = ans->next;
             ans->val = tmp[h--];
@@ -38,7 +35,6 @@ public:
         }
         
         if(l == h){
-            // ans->next = new ListNode(tmp[l]);
             ans->val = tmp[l];
             ans = ans->next;
         }
