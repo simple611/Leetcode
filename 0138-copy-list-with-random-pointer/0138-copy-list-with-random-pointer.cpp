@@ -16,7 +16,7 @@ public:
 
 class Solution {
 public:
-    Node* copyRandomList(Node* head) {
+    Node* copyRandomList_hashmap(Node* head) {
         unordered_map<Node*, Node*> mp;
         
         Node *head1 = new Node(0);
@@ -46,4 +46,49 @@ public:
         
         return head1->next;
     }
+    
+     Node* copyRandomList(Node* head) {
+         if(head == NULL ) return head;
+         
+         Node *tmp = head;
+         
+         // Step 1: Create a node and insert in between each original node
+         while(tmp != NULL){
+             Node *newNode = new Node(tmp->val);
+             
+             newNode->next = tmp->next;
+             tmp->next = newNode;
+             tmp = tmp->next->next;  // or tmp = newNode->next
+         }
+         
+         // Step 2: Update random pointer of new nodes
+         
+         tmp = head;
+         
+         while(tmp!= NULL){
+             if(tmp->random){
+                 tmp->next->random = tmp->random->next;  // Since we need to point to newly created node so tmp->random->next
+             }
+             tmp = tmp->next->next;
+         }
+         
+         // Step 3: Remove old nodes
+         
+         Node *oldHead = head;
+         Node *newHead = head->next;
+         
+         Node *curOld = oldHead;
+         Node *curNew = newHead;
+         
+         while(curOld){
+             curOld->next = curOld->next->next;
+             
+             curNew->next =  curNew->next ? curNew->next->next : NULL;
+             curOld = curOld->next;
+             curNew = curNew->next;
+         }
+         
+         return newHead;
+         
+     }
 };
