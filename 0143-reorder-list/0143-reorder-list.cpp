@@ -12,7 +12,7 @@ class Solution {
 public:
     
     // TC - O(N)  SC - O(N)
-    void reorderList(ListNode* head) {
+    void reorderList_array(ListNode* head) {
         
         vector<int> tmp;
         
@@ -38,6 +38,68 @@ public:
             ans->val = tmp[l];
             ans = ans->next;
         }
+        
+    }
+    
+    ListNode* reverse(ListNode *head){
+        if(head == NULL|| head->next == NULL)
+            return head;
+        
+        ListNode *prev = NULL;
+        ListNode *cur = head;
+        while(cur != NULL){
+            ListNode *tmp = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = tmp;
+        }
+        
+        return prev;
+    }
+    
+    void merge(ListNode* l1, ListNode* l2){
+        
+        while(l1){
+            ListNode *p1 = l1->next;
+            ListNode *p2 = l2->next;
+            
+            l1->next = l2;
+            
+            if(p1 == NULL){
+                break;
+
+            }
+            l2->next = p1;
+            l1 = p1;
+            l2 = p2;
+        }
+    }
+    
+    void reorderList(ListNode *head){
+        // Find middle node, split in half,
+        // Reverse 2nd half of list,
+        // Merge both list
+        
+        
+        // Edge case
+        if(head == NULL || head->next == NULL )
+            return ;
+        
+        // find middle node
+        ListNode *slow = head;
+        ListNode *fast = head;
+        ListNode *prev = NULL;
+        while(fast && fast->next!= NULL){
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        
+        prev->next = NULL;
+        ListNode* l1 = head;
+        ListNode* l2 = reverse(slow);
+        
+        merge(l1, l2);
         
     }
 };
