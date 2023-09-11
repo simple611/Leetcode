@@ -1,10 +1,10 @@
 
-class LRUCache_splice {
+class LRUCache{
     int c;
     list<pair<int, int>> l;
     unordered_map<int, list<pair<int, int>>::iterator> m;
 public:
-    LRUCache_splice(int capacity) {
+    LRUCache(int capacity) {
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
         c = capacity;
@@ -30,14 +30,14 @@ public:
         m[key] = l.begin();
     }
 };
-class LRUCache {
+class LRUCache_other {
 private:
     int size = 0;
     unordered_map<int, pair<list<int>::iterator, int>> mp;   // map<key, pair<key iterator in list, value>>
     list<int> l_cache;
 public:
     
-    LRUCache(int capacity) {
+    LRUCache_other(int capacity) {
         size = capacity;
     }
     
