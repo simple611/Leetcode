@@ -12,7 +12,7 @@ class Solution {
 public:
     // Array + sorting 
     // TC: O(nlog n) SC- O(n)
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
+    ListNode* mergeKLists_array(vector<ListNode*>& lists) {
         int k = lists.size();
         if(k==0) return NULL;
         
@@ -39,5 +39,43 @@ public:
         arr[arr.size()-1].second->next = NULL;
         
         return arr[0].second;
+    }
+    
+    typedef pair<int, ListNode*> pi;
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        int k = lists.size();
+        if(k==0) return NULL;
+        
+        priority_queue<pi, vector<pi>, greater<pi>> minHeap;
+        
+        for(int i=0;i<k;i++){
+            ListNode *curNode = lists[i];
+            
+            if(curNode != NULL){
+                minHeap.push({curNode->val, curNode});
+            }
+        }
+        
+        if(minHeap.size() == 0) return NULL;
+        
+        ListNode *head = new ListNode();
+        ListNode *cur = head;
+        
+        while(!minHeap.empty()){
+            
+            ListNode *tmp = minHeap.top().second;
+            minHeap.pop();
+            
+            if(tmp->next != NULL){
+                minHeap.push({tmp->next->val, tmp->next});
+            }
+            
+            cur->next = tmp;
+            cur = cur->next;
+        }
+        
+        cur->next = NULL;
+        
+        return head->next;
     }
 };
