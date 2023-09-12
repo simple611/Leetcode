@@ -41,8 +41,10 @@ public:
         return arr[0].second;
     }
     
+    // priority_queue minHeap 
+    // TC: O(nlog k) SC- O(k)
     typedef pair<int, ListNode*> pi;
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
+    ListNode* mergeKLists_priorityqueue(vector<ListNode*>& lists) {
         int k = lists.size();
         if(k==0) return NULL;
         
@@ -78,4 +80,56 @@ public:
         
         return head->next;
     }
+    
+    ListNode *merge(ListNode * l1, ListNode *l2){
+        ListNode *t3 = new ListNode();
+        ListNode *head_t3 = t3;
+        if(l1 == nullptr)
+            return l2;
+        if(l2 == nullptr)
+            return l1;
+        
+        while(l1!= nullptr && l2 != nullptr)
+        {
+            if(l1->val <= l2->val)
+            {
+                t3->next = l1;
+                l1=l1->next;
+            }
+            else
+            {
+                t3->next = l2;
+                l2= l2->next;
+            }
+            t3 = t3->next;
+        }
+        if(l1)
+        {
+            t3->next =l1;
+        }
+        if(l2)
+        {
+            t3->next = l2;
+        }
+        return head_t3->next;
+    }
+    // Using 2 pointers and merge sort for sorted list
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        int k = lists.size();
+        if( k == 0) return NULL;
+        
+        // int start = 0, end = k-1;
+        
+        while(k>1){
+            
+            for(int i = 0;i<k/2;i++){
+                lists[i] = merge(lists[i], lists[k-i-1]);
+            }
+            k= (k+1)/2;
+        }
+        
+        return lists.front();
+        
+    }
+    
 };
