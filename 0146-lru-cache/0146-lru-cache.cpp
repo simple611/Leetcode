@@ -149,7 +149,7 @@ public:
         if((cache.find(key) != cache.end())) {      
             remove(cache[key]);
             insert(cache[key]);
-            cache[key] = head->next;
+            // cache[key] = head->next;
             return cache[key]->val;
         }
         return -1;
