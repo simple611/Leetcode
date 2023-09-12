@@ -113,7 +113,8 @@ public:
         }
         return head_t3->next;
     }
-    // Using 2 pointers and merge sort for sorted list
+    // Using Divide and Conquere, and merge sort for sorted list
+    // TC: O(nlog k) SC- O(1) , 
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         int k = lists.size();
         if( k == 0) return NULL;
