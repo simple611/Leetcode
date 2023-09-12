@@ -1,10 +1,10 @@
 
-class LRUCache{
+class LRUCache_map{
     int c;
     list<pair<int, int>> l;
     unordered_map<int, list<pair<int, int>>::iterator> m;
 public:
-    LRUCache(int capacity) {
+    LRUCache_map(int capacity) {
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
         c = capacity;
@@ -75,6 +75,104 @@ public:
             l_cache.pop_back();
             size++;
         }
+    }
+};
+
+
+
+ class Node{
+ public:
+     int key;
+     int val;
+     Node* next;
+     Node* prev;
+     
+     Node(int k, int v){
+         key = k;
+         val = v;
+         prev = NULL;
+         next = NULL;
+     }
+     
+     
+ };
+    // Hash map + doubly linked list, left = LRU, right = MRU
+    // get: update to MRU, put: update to MRU, remove LRU if full
+class LRUCache{
+private:
+    int c;
+    unordered_map<int, Node*> cache;
+    Node *head;
+    Node *tail;
+    
+    void remove(Node* delNode){
+        Node *prevNode = delNode->prev;
+        Node *nextNode = delNode->next;
+        
+        prevNode->next = nextNode;
+        nextNode->prev = prevNode;
+        
+    }
+    
+    // insert node at head, i.e next to head;
+    void insert(Node *newNode){
+        // Node *prevHead = head;
+        
+        // cout<<"Insert val="<<newNode->val<<endl;
+        Node *nextNode = head->next;
+        Node *prevNode = head->prev;
+        
+        newNode->prev = head;
+        newNode->next = nextNode;
+        
+        head->next = newNode;
+        nextNode->prev = newNode;
+        
+        
+    }
+
+public:
+    LRUCache(int capacity) {
+        c = capacity;
+        head = new Node(0,0);
+        tail = new Node(0,0);
+        
+        head->next = tail;
+        tail->prev = head;
+        
+    }
+    
+    int get(int key) {
+        if((cache.find(key) != cache.end())) {      
+            remove(cache[key]);
+            insert(cache[key]);
+            cache[key] = head->next;
+            return cache[key]->val;
+        }
+        return -1;
+    }
+    
+    void put(int key, int value) {
+        if(cache.find(key) != cache.end()){
+            remove(cache[key]);
+            
+            delete cache[key];
+        }
+        
+        Node *newNode = new Node(key, value);
+        insert(newNode);
+        cache[key] = newNode;
+        
+        if(cache.size() > c){
+            Node *lru = tail->prev;
+            remove(tail->prev);
+            cache.erase(lru->key);
+        }
+
+        // for(auto a : cache){
+        //     cout<<"key= "<<a.first<<"\t value = "<<(a.second)->val<<endl;
+        // }
+        
     }
 };
 
