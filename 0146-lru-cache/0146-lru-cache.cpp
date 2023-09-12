@@ -105,6 +105,7 @@ private:
     Node *head;
     Node *tail;
     
+    // TC- O(1)
     void remove(Node* delNode){
         Node *prevNode = delNode->prev;
         Node *nextNode = delNode->next;
@@ -115,6 +116,7 @@ private:
     }
     
     // insert node at head, i.e next to head;
+    // TC - O(1)
     void insert(Node *newNode){
         // Node *prevHead = head;
         
@@ -142,6 +144,7 @@ public:
         
     }
     
+    // TC - O(1), worst case O(N), beacuse of mp.find()
     int get(int key) {
         if((cache.find(key) != cache.end())) {      
             remove(cache[key]);
@@ -152,6 +155,7 @@ public:
         return -1;
     }
     
+    // TC - O(1), worst case O(N), beacuse of mp.find(), and erase
     void put(int key, int value) {
         if(cache.find(key) != cache.end()){
             remove(cache[key]);
@@ -169,9 +173,6 @@ public:
             cache.erase(lru->key);
         }
 
-        // for(auto a : cache){
-        //     cout<<"key= "<<a.first<<"\t value = "<<(a.second)->val<<endl;
-        // }
         
     }
 };
