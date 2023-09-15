@@ -56,8 +56,9 @@ public:
         return res;
     }
     
+    // TC - O(N)  SC- O(N)
     vector<int> postorderTraversal(TreeNode* root) {    
-        // Iterative implementation
+        // Iterative implementation using 1 stack
         
         vector<int> res;
         stack<TreeNode *> st;
