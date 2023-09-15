@@ -10,6 +10,8 @@
  */
 class Solution {
 public:
+    
+    // TC - O(N)   SC- O(1)
     ListNode* reverseKGroup(ListNode* head, int k) {
         if(head == NULL || k == 1)
             return head;
