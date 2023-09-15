@@ -18,9 +18,31 @@ public:
         res.push_back(root->val);
         inorder(root->right, res);
     }
-    vector<int> inorderTraversal(TreeNode* root) {
+    // TC - O(N)  SC- O(N)
+    vector<int> inorderTraversal_recurs(TreeNode* root) {
         vector<int> res;
         inorder(root, res);
+        return res;
+    }
+    
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        
+        stack<TreeNode *> st;
+        
+        TreeNode *cur = root;
+        
+        while(cur!= NULL || !st.empty()){
+            while(cur != NULL){
+                st.push(cur);
+                cur = cur->left;
+            }
+            
+            cur = st.top();
+            st.pop();
+            res.push_back(cur->val);
+            cur = cur->right;
+        }
         return res;
     }
 };
