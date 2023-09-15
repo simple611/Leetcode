@@ -115,7 +115,7 @@ public:
     }
     // Using Divide and Conquere, and merge sort for sorted list
     // TC: O(nlog k) SC- O(1) , 
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
+    ListNode* mergeKLists_updated(vector<ListNode*>& lists) {
         int k = lists.size();
         if( k == 0) return NULL;
         
@@ -130,6 +130,27 @@ public:
         }
         
         return lists.front();
+        
+    }
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        int k = lists.size();
+        if( k == 0) return NULL;
+        
+        k = lists.size() -1;
+        
+        while(k!=0){
+            
+            int i = 0,j = k;
+            while(i<j) {
+                lists[i]=merge(lists[i],lists[j]);
+                i++;
+                j--;
+                if(i>=j) 
+                    k=j;
+            }
+        }
+        
+        return lists[0];
         
     }
     
