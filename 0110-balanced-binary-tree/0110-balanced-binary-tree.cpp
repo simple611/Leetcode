@@ -29,6 +29,8 @@ public:
         
         return 1 + max(lH, rH);
     }
+    
+    // TC - O(N)   SC- O(N)
     bool isBalanced(TreeNode* root) {
         return height(root) != -1;
     }
