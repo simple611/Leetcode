@@ -31,7 +31,26 @@ public:
     }
     
     // TC - O(N)   SC- O(N)
-    bool isBalanced(TreeNode* root) {
+    bool isBalanced1(TreeNode* root) {
         return height(root) != -1;
+    }
+    
+    int heightTree(TreeNode* root){
+        if(root == NULL)
+            return 0;
+        
+        int lh = heightTree(root->left);
+        int rh = heightTree(root->right);
+        
+        return max(lh, rh) +1;
+    }
+    bool isBalanced(TreeNode* root) {
+        if (root == NULL)
+            return true;
+        
+        if(abs(heightTree(root->left) - heightTree(root->right)) > 1)
+            return false;
+        else
+            return isBalanced(root->left) && isBalanced(root->right);
     }
 };
