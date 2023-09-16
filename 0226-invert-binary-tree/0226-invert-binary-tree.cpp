@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    // TC - O(N)  SC - O(N)
     TreeNode* invertTree(TreeNode* root) {
         if(root == NULL){
             return NULL;
