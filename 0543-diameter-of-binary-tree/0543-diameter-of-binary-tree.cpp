@@ -49,6 +49,7 @@ public:
         
         return 1 + max(lh,rh);
     }
+    // TC - O(N)  SC - O(N)
     int diameterOfBinaryTree(TreeNode* root) {
          if(root == NULL) return 0;
          int maxDia = INT_MIN;
