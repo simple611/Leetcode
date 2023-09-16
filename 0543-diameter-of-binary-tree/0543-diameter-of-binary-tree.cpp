@@ -21,7 +21,10 @@ public:
         return 1 + max(lh,rh);
         
     }
-    int diameterOfBinaryTree(TreeNode* root) {
+    
+    // TC - O(N * H )  --> Worst case O(N^2)
+    // SC - O(N)
+    int diameterOfBinaryTree_brute(TreeNode* root) {
         if( root == NULL)
             return 0;
         
@@ -33,8 +36,24 @@ public:
         int maxLeft = diameterOfBinaryTree(root->left);
         int maxRight = diameterOfBinaryTree(root->right);
         
-        return max(maxPath, max(maxLeft, maxRight));
-        
-        
+        return max(maxPath, max(maxLeft, maxRight));   
     }
+    
+    int helpDia(TreeNode * root, int &maxDia){
+        if(root == NULL) return 0;
+        
+        int lh = helpDia(root->left, maxDia);
+        int rh = helpDia(root->right, maxDia);
+        
+        maxDia = max(maxDia, lh+rh);
+        
+        return 1 + max(lh,rh);
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+         if(root == NULL) return 0;
+         int maxDia = INT_MIN;
+         helpDia(root, maxDia);
+         return maxDia;
+     }
+    
 };
