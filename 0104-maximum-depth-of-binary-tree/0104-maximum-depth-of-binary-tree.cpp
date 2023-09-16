@@ -44,8 +44,8 @@ public:
     // TC- O(N)  SC- O(N)
     int maxDepth(TreeNode* root) 
     {
-        // return maxDepBottom(root);
-        maxDepTop(root, 1);
+        return maxDepBottom(root);
+        // maxDepTop(root, 1);
         return ans;
     }
 };
