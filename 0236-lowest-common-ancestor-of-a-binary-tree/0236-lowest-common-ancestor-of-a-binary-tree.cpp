@@ -31,6 +31,8 @@ public:
 //         recurseTree(root, p, q);
 //         return ans;
 //     }
+    
+    // TC - O(N)  SC - O(N)
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(root == nullptr)
             return nullptr;
