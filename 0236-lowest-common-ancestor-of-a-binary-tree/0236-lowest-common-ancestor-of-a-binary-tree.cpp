@@ -42,8 +42,8 @@ public:
         
         if(left == nullptr)
             return right;
-        if(right == nullptr)
+        else if(right == nullptr)
             return left;
-        return root;
+        else return root;
     }
 };
