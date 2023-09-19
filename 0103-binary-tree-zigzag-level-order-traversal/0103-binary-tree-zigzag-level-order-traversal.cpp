@@ -11,10 +11,12 @@
  */
 class Solution {
 public:
+    
+    // TC - O(N)   SC- O(N)
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
 
         vector<vector<int>> res;
-                if(root == NULL)
+        if(root == NULL)
             return res;
         queue<TreeNode *> q;
         q.push(root);
