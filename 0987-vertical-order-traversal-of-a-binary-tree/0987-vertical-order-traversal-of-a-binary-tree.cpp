@@ -37,10 +37,13 @@ public:
         for(auto x: mp){
             vector<int> col;
             
-            for(auto a: x.second){
-                for(auto ele: a.second){
-                    col.push_back(ele);
-                }
+            // for(auto a: x.second){
+            //     for(auto ele: a.second){
+            //         col.push_back(ele);
+            //     }
+            // }
+            for (auto a: x.second) {
+                col.insert(col.end(), a.second.begin(), a.second.end());
             }
             ans.push_back(col);
         }
