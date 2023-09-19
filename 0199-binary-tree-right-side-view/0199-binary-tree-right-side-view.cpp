@@ -14,7 +14,7 @@ public:
     void preOrder(TreeNode* root, vector<int>&res, int lev){
         if(root == nullptr)
             return;
-        if(res.size()<lev){
+        if(res.size() == lev){
             res.push_back(root->val);
         }
         preOrder(root->right, res, lev+1);
@@ -22,14 +22,15 @@ public:
     }
     
     // TC - O(N)  SC - O(H)  , O(N) for stack space
-    vector<int> rightSideView_Recursive(TreeNode* root) {
+    vector<int> rightSideView(TreeNode* root) {
         vector<int> res;
         preOrder(root, res, 0);
         return res;
     }
     
-    
-    vector<int> rightSideView(TreeNode* root) {
+    // TC - O(N)  SC- O(N)
+    // Iterative solution
+    vector<int> rightSideView_it(TreeNode* root) {
         vector<int> res;
         if(root == NULL)
             return res;
