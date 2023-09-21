@@ -13,6 +13,7 @@ class Solution {
 public:
     
     int ans;
+    // TC - O(N)  SC- O(N)
     void dfs(TreeNode* root, int curMax){
         if(root== NULL)
             return;
