@@ -26,42 +26,25 @@ public:
         return validBST(root, nullptr, nullptr);
     }
     
-//     bool isValidBST(TreeNode* root) {
+    bool isValidBST(TreeNode* root) {
                                                                                                                                                                                                                       
-//         TreeNode *prev = nullptr;
-//         TreeNode *cur = root;
-//         stack<TreeNode*> st;
+        TreeNode *prev = nullptr;
+        TreeNode *cur = root;
+        stack<TreeNode*> st;
         
-//         while(cur || !st.empty()){
-//             if(cur){
-//                 st.push(cur);
-//                 cur = cur->left;
-//             }
-//             cur = st.top();
-//             st.pop();
-            
-//             if(prev != nullptr && cur->val <= prev->val) return false;
-//             prev = cur;
-//             cur = cur->right;
-//         }
-//         return true;
-//     }
-    
-        bool isValidBST(TreeNode* root) {
-        stack <TreeNode*> s;        
-        TreeNode* pre=NULL;
-        
-        while (root || !s.empty()) {
-            while (root) {
-                s.push(root);
-                root=root->left;
+        while(cur || !st.empty()){
+            while(cur){
+                st.push(cur);
+                cur = cur->left;
             }
-            root=s.top(), s.pop();
+            cur = st.top();
+            st.pop();
             
-            if (pre!=NULL && root->val<=pre->val) return false;
-            pre=root;
-            root=root->right;
+            if(prev != nullptr && cur->val <= prev->val) return false;
+            prev = cur;
+            cur = cur->right;
         }
         return true;
     }
+    
 };
