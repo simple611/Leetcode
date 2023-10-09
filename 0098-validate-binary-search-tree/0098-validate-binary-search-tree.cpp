@@ -22,11 +22,13 @@ public:
         return validBST(root->right, root, high) && validBST(root->left, low, root);
         
     }
-    bool isValidBST_reursion(TreeNode* root) {
+    // TC - O(N)  SC- O(N)
+    bool isValidBST(TreeNode* root) {
         return validBST(root, nullptr, nullptr);
     }
     
-    bool isValidBST(TreeNode* root) {
+    // TC - O(N)  SC- O(1)
+    bool isValidBST_I(TreeNode* root) {
                                                                                                                                                                                                                       
         TreeNode *prev = nullptr;
         TreeNode *cur = root;
