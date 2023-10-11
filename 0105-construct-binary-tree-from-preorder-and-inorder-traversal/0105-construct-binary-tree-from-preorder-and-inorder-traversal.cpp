@@ -28,7 +28,7 @@ public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         int n = inorder.size();
         if (n==0)
-            return {};
+            return nullptr;
         for(int i=0;i<n;i++){
             mp[inorder[i]]=i;
         }
