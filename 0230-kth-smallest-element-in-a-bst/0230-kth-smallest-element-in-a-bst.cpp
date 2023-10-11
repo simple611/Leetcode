@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    // TC - O(N)  SC - O(N)
+    
     void inorder(TreeNode* root, vector<int>& res){
         if(root == nullptr)
             return;
@@ -33,12 +33,14 @@ public:
         }
         inorder_optimized(root->right, k, res);
     }
+    // TC - O(N)  SC - O(N) + O(N)
     int kthSmallest_inorder(TreeNode* root, int k){
         vector<int> res;
         inorder(root, res);
         return res[k-1];
     }
     
+    // TC - O(N)  SC - O(N)
     int kthSmallest(TreeNode* root, int k){
         int res;
         inorder_optimized(root, k, res);
