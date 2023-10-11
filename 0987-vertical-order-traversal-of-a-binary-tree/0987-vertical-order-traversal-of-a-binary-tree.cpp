@@ -11,6 +11,9 @@
  */
 class Solution {
 public:
+    
+    // TC - O(N*logN*logN*logN)
+    //SC -  O(N)
     vector<vector<int>> verticalTraversal(TreeNode* root) {
         map<int, map<int, multiset<int>>> mp;   // [dist][level] = val
         
@@ -50,4 +53,7 @@ public:
         
         return ans;
     }
+    
+ 
+    
 };
