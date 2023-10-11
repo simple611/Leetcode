@@ -20,9 +20,28 @@ public:
         inorder(root->right, res);
     }
     
-    int kthSmallest(TreeNode* root, int k){
+    
+    void inorder_optimized(TreeNode* root, int &k, int &res){
+        if(root == nullptr)
+            return;
+        
+        inorder_optimized(root->left, k, res);
+        k--;
+        if(k == 0){
+            res = root->val;
+            return;
+        }
+        inorder_optimized(root->right, k, res);
+    }
+    int kthSmallest_inorder(TreeNode* root, int k){
         vector<int> res;
         inorder(root, res);
         return res[k-1];
+    }
+    
+    int kthSmallest(TreeNode* root, int k){
+        int res;
+        inorder_optimized(root, k, res);
+        return res;
     }
 };
