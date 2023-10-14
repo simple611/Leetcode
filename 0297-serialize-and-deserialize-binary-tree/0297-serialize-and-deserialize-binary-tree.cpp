@@ -22,7 +22,7 @@ public:
     }
     
     // Encodes a tree to a single string.
-    string serialize(TreeNode* root) {
+    string serialize_old(TreeNode* root) {
         string s="";
         preorderDFS(root,s);
         return s;
@@ -49,13 +49,42 @@ public:
     }
     
     // Decodes your encoded data to tree.
-    TreeNode* deserialize(string data) {
+    TreeNode* deserialize_old(string data) {
         if(data.size()<=1)
             return nullptr;
         return decode(data);
     }
 
 
+    
+    string serialize(TreeNode* root) {
+        
+        if(root == nullptr)
+            return "N ";
+        string left = serialize(root->left);
+        string right = serialize(root->right);
+        
+        return to_string(root->val) + " " + left + right;
+    }
+    
+    
+    TreeNode* makeTree(istringstream& ss){
+        string s;
+        ss >> s;
+        
+        if(s == "N")
+            return nullptr;
+        
+        TreeNode *newRoot = new TreeNode(stoi(s));
+        newRoot->left = makeTree(ss);
+        newRoot->right = makeTree(ss);
+        return newRoot;
+        
+    }
+    TreeNode* deserialize(string data) {
+        istringstream ss(data);
+        return makeTree(ss);
+    }
 };
 
 // Your Codec object will be instantiated and called as such:
