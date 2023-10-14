@@ -60,17 +60,21 @@ public:
     string serialize(TreeNode* root) {
         
         if(root == nullptr)
-            return "N ";
+            return "N,";
         string left = serialize(root->left);
         string right = serialize(root->right);
         
-        return to_string(root->val) + " " + left + right;
+        return to_string(root->val) + "," + left + right;
     }
     
     
     TreeNode* makeTree(istringstream& ss){
+        
         string s;
-        ss >> s;
+        if(!getline(ss, s, ',') || s.empty())
+            return NULL;
+        // string s;
+        // ss >> s;
         
         if(s == "N")
             return nullptr;
