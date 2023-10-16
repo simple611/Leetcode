@@ -1,27 +1,29 @@
 class Solution {
 public:
     vector<vector<int>> subsetSet;
-    void generate(vector<int>& set, int i, vector<int>& nums){
+    void generate(vector<int>& nums, int i, vector<int> &tmp){
         if(i == nums.size())
         {
-            subsetSet.push_back(set);
+            subsetSet.push_back(tmp);
             return;
         }
         
-        // Consider ith element
-        set.push_back(nums[i]);
-        generate(set, i+1, nums);
+        //Consider ith element
+        tmp.push_back(nums[i]);
+        generate(nums, i+1, tmp);
         
         // Don't consider ith element
-        set.pop_back();
-        generate(set, i+1, nums);
+        tmp.pop_back();
+        generate(nums, i+1, tmp);
+
         
     }
     
-    // TC - O(N * 2^N)   SC - O(N * 2^N)
+//     // TC - O(2^N)   SC - O(2^N)
     vector<vector<int>> subsets(vector<int>& nums) {
-        vector<int> set;
-        generate(set, 0, nums);
+        vector<int> tmp;
+        generate(nums, 0, tmp);
         return subsetSet;
     }
+
 };
