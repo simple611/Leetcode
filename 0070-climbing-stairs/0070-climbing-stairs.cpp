@@ -9,7 +9,7 @@ public:
     }
         
     // Tc = O(n) ::SC = O(n)
-    int climbStairs(int n) {
+    int climbStairs_bottomUp(int n) {
         // Bottom up approach with Memoization ::Tc = O(n) ::SC = O(n)
         int num[n+1];
         num[0]=1;
@@ -20,18 +20,20 @@ public:
         }
         return num[n];
     }   
-        //Updated Bottom Up appraoch ::TC = O(n)  ::SC = 1
-        // if(n==0 || n==1)
-        //     return 1;
-        // int first = 1;
-        // int second = 1;
-        // int tmp = 0;
-        // for(int i=2;i<=n;i++)
-        // {
-        //     tmp = first + second;
-        //     first = second;
-        //     second = tmp;
-        // }
-        // return second;
-    // }
+    
+    //Updated Bottom Up appraoch ::TC = O(n)  ::SC = 1
+    int climbStairs(int n) {
+        if(n==0 || n==1)
+            return 1;
+        int first = 1;
+        int second = 1;
+        int tmp = 0;
+        for(int i=2;i<=n;i++)
+        {
+            tmp = first + second;
+            first = second;
+            second = tmp;
+        }
+        return second;
+    }
 };
