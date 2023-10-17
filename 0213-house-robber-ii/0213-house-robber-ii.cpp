@@ -35,7 +35,7 @@ public:
         return maxRob(nums, n, start);
     }
     
-    int houseRobber(vector<int>& nums) {
+    int houseRobber1(vector<int>& nums) {
         // dynamic programming - decide each problem by its sub-problems:
         int dp[nums.size()+1];
         dp[0] = nums[0];
@@ -43,6 +43,24 @@ public:
         for (int i=2; i<nums.size(); i++)
             dp[i] = max(dp[i-1], nums[i]+dp[i-2]);
         return dp[nums.size()-1];
+    }
+    
+    int houseRobber(vector<int>& nums) {
+        int n = nums.size();
+            if(n==0)
+                return 0;
+            if(n==1)
+                return nums[0];
+            int prev_2 = nums[0];
+            int prev_1 = max(nums[0], nums[1]);
+
+            for(int i=2;i<n;i++)
+            {
+                int tmp = max(nums[i]+prev_2, prev_1);
+                prev_2 = prev_1;
+                prev_1 = tmp;
+            }
+            return max(prev_1, prev_2);
     }
     
     // TC - O(N)  SC- O(N)
