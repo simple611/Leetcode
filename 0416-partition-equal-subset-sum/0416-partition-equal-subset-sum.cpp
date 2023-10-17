@@ -57,6 +57,9 @@ public:
 //         }
         
         //Top Down DP
+        // TC : O(M *N) + O(N)
+        // SC : O(M *N)
+        
         int sum =0;
         int n = nums.size();
         for(int i : nums){
