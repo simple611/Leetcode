@@ -12,6 +12,8 @@ public:
         dfs(grid, i, j-1, rows, cols);
         dfs(grid, i, j+1, rows, cols);
     }
+    
+    // TC - O(M*N)  SC - O(M*N)
     void solve(vector<vector<char>>& board) {
         int m = board.size();
         
