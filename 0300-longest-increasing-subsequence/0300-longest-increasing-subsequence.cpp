@@ -1,7 +1,7 @@
 class Solution {
 public:
     // TC - O(n^2)  SC - O(n)
-    int lengthOfLIS_withoutBS(vector<int>& nums) {
+    int lengthOfLIS(vector<int>& nums) {
         vector<int> lis(nums.size()+1, 1);
         int ans = 1;
 
@@ -21,7 +21,7 @@ public:
     }
     
     //TC - O(nlogn)  SC- O(n)
-    int lengthOfLIS(vector<int>& nums) {
+    int lengthOfLIS_b(vector<int>& nums) {
         vector<int> res;
         for(int i=0; i<nums.size(); i++) {
             // Check if the elememt is not in the res array, then add it
